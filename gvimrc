@@ -6,4 +6,4 @@ if has("gui_macvim")
 endif
 
 " Font
-set guifont=Meslo\ LG\ M\ DZ:h14
+set guifont=Meslo\ LG\ M\ DZ:h9

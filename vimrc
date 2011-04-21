@@ -66,8 +66,9 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=3 
+   set tabstop=4
+   set softtabstop=4 
+   set shiftwidth=4 
 
    au FileType Makefile set noexpandtab
 "}      							
@@ -237,30 +238,9 @@ autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
-"--------------------------------------------------------------------------- 
-set encoding=utf-8                                  
-set termencoding=utf-8
+"set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin1
-
-fun! ViewUTF8()
-	set encoding=utf-8                                  
-	set termencoding=chinese
-endfun
-
-fun! UTF8()
-	set encoding=utf-8                                  
-	set termencoding=chinese
-	set fileencoding=utf-8
-	set fileencodings=ucs-bom,chinese,utf-8,latin1
-endfun
-
-fun! Chinese()
-	set encoding=chinese
-	set fileencoding=chinese
-endfun
-
-
 "--------------------------------------------------------------------------- 
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
