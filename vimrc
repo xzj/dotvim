@@ -1,3 +1,4 @@
+
 " Fang Yixun's vimrc file
 "  Base on vgod's vimrc https://github.com/vgod/vimrc.git
 "
@@ -66,7 +67,6 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set tabstop=4
    set softtabstop=4 
    set shiftwidth=4 
 
@@ -198,6 +198,46 @@ cmap cd. lcd %:p:h
 "--------------------------------------------------------------------------- 
 " PROGRAMMING SHORTCUTS
 "--------------------------------------------------------------------------- 
+" Find file in current directory and edit it.
+function! Find(...)
+  let path="."
+  if a:0==2
+    let path=a:2
+  endif
+  let l:list=system("find ".path. " -iname '".a:1."*' | grep -v -E '(\.svn|\.class)' ")
+  let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
+  if l:num < 1
+    echo "'".a:1."' not found"
+    return
+  endif
+  if l:num == 1
+    exe "open " . substitute(l:list, "\n", "", "g")
+  else
+    let tmpfile = tempname()
+    exe "redir! > " . tmpfile
+    silent echon l:list
+    redir END
+    let old_efm = &efm
+    set efm=%f
+
+    if exists(":cgetfile")
+        execute "silent! cgetfile " . tmpfile
+    else
+        execute "silent! cfile " . tmpfile
+    endif
+
+    let &efm = old_efm
+
+    " Open the quickfix window below the current window
+    botright copen
+
+    call delete(tmpfile)
+  endif
+endfunction
+command! -nargs=* Find :call Find(<f-args>)
+
+"taglist
+let Tlist_Ctags_Cmd = '/opt/ctags-5.8/ctags'
 
 " Ctrl-[ jump out of the tag stack (undo Ctrl-])
 map <C-[> <ESC>:po<CR>
@@ -238,9 +278,30 @@ autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
-"set encoding=utf-8
+"--------------------------------------------------------------------------- 
+set encoding=utf-8                                  
+set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin1
+   
+fun! ViewUTF8()
+	set encoding=utf-8                                  
+	set termencoding=chinese
+endfun
+
+fun! UTF8()
+	set encoding=utf-8                                  
+	set termencoding=chinese
+	set fileencoding=utf-8
+	set fileencodings=ucs-bom,chinese,utf-8,latin1
+endfun
+
+fun! Chinese()
+	set encoding=chinese
+	set fileencoding=chinese
+endfun
+
+
 "--------------------------------------------------------------------------- 
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
@@ -283,8 +344,8 @@ let g:CommandTMaxHeight = 15
 let g:SuperTabDefaultCompletionType = "context"
 
 " --- dbext
-let g:dbext_default_profile_DEVDB = 'type=ORA:srvname=//192.168.3.3\:1521/orcldev'
-let g:dbext_default_profile_GZDB = 'type=ORA:srvname=//192.168.1.234\:1521/gd'
+let g:dbext_default_profile_DEVDB = 'type=ORA:srvname=//192.168.3.3\:1521/orclsh'
+let g:dbext_default_profile_GZDB = 'type=ORA:srvname=//192.168.1.231\:1521/gd'
 let g:dbext_default_profile_SHDB = 'type=ORA:srvname=//192.168.1.253\:1521/orcl'
 "let g:dbext_default_profile_ZYDB = 'type=SQLSRV:host=192.168.3.2'
-
+let g:dbext_default_profile_ZYDB = 'type=ODBC:dsnname=zy_comm_db'
