@@ -279,8 +279,8 @@ autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
-set encoding=utf-8                                  
-set termencoding=utf-8
+"set encoding=utf-8                                  
+"set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin1
    
