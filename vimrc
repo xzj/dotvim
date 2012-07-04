@@ -5,7 +5,8 @@
 " GITHUB https://github.com/gzeureka/dotvim
 
 " for pathogen.vim: auto load all plugins in .vim/bundle
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
+" call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " general settings
@@ -121,6 +122,9 @@ endfun
 let mapleader=","
 let g:mapleader=","
 
+" set <leader><leader> in insert mode as a replacement of <ESC>
+imap <leader><leader> <ESC>
+
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
 
@@ -133,23 +137,29 @@ map <leader>[ :cp<CR>
 
 " --- move around splits {
 " move to and maximize the below split 
-map <C-J> <C-W>j<C-W>_
+"map <C-J> <C-W>j<C-W>_
 " move to and maximize the above split 
-map <C-K> <C-W>k<C-W>_
+"map <C-K> <C-W>k<C-W>_
 " move to and maximize the left split 
-nmap <c-h> <c-w>h<c-w><bar>
+"nmap <c-h> <c-w>h<c-w><bar>
 " move to and maximize the right split  
-nmap <c-l> <c-w>l<c-w><bar>
+"nmap <c-l> <c-w>l<c-w><bar>
 set wmw=0                     " set the min width of a window to 0 so we can maximize others 
 set wmh=0                     " set the min height of a window to 0 so we can maximize others
 " }
 
+" go to the first and the last character  
+map <C-I> ^
+map <C-O> $
+
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
 " go to prev tab 
-map <S-H> gT
+"map <S-H> gT
+map <C-J> gT
 " go to next tab
-map <S-L> gt
+"map <S-L> gt
+map <C-K> gt
 
 " new tab
 map <C-t><C-t> :tabnew<CR>
@@ -349,3 +359,11 @@ let g:dbext_default_profile_GZDB = 'type=ORA:srvname=//192.168.1.231\:1521/gd'
 let g:dbext_default_profile_SHDB = 'type=ORA:srvname=//192.168.1.253\:1521/orcl'
 "let g:dbext_default_profile_ZYDB = 'type=SQLSRV:host=192.168.3.2'
 let g:dbext_default_profile_ZYDB = 'type=ODBC:dsnname=zy_comm_db'
+
+" --- slimv
+let g:lisp_rainbow = 1
+
+" --- lookupfile
+let g:LookupFile_TagExpr = string('./filenametags')
+map <leader>lt :LUTags<CR>
+imap <leader>lt <ESC>:LUTags<CR>
