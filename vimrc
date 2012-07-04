@@ -122,8 +122,18 @@ endfun
 let mapleader=","
 let g:mapleader=","
 
-" set <leader><leader> in insert mode as a replacement of <ESC>
+" set shortcut in insert mode as a replacement of <ESC>
 imap <leader><leader> <ESC>
+" set shortcut in normal mode as a replacement of <ESC>
+nmap <leader><leader><leader> <ESC>
+
+" shortcut for switch between split windows in a tab
+map <leader>ww <C-W><C-W>
+
+" shortcut for switch to alternative buffer
+map <leader>. <C-^>
+
+"""""""""""""""""""""""
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
