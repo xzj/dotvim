@@ -128,10 +128,10 @@ imap <leader><leader> <ESC>
 nmap <leader><leader><leader> <ESC>
 
 " shortcut for switch between split windows in a tab
-map <leader>ww <C-W><C-W>
+map <leader><leader>w <C-W><C-W>
 
 " shortcut for switch to alternative buffer
-map <leader>. <C-^>
+map <leader><leader>. <C-^>
 
 """""""""""""""""""""""
 
