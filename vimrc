@@ -133,6 +133,10 @@ map <leader><leader>w <C-W><C-W>
 " shortcut for switch to alternative buffer
 map <leader><leader>. <C-^>
 
+" shortcut for forward and backward
+map <leader><leader>f <C-F>
+map <leader><leader>b <C-B>
+
 """""""""""""""""""""""
 
 "replace the current word in all opened buffers
