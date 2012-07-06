@@ -137,6 +137,9 @@ map <leader><leader>. <C-^>
 map <leader><leader>f <C-F>
 map <leader><leader>b <C-B>
 
+" shortcut for %
+map <leader><leader>m %
+
 """""""""""""""""""""""
 
 "replace the current word in all opened buffers
