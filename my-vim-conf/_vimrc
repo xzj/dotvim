@@ -5,9 +5,9 @@
 " GITHUB https://github.com/gzeureka/dotvim
 
 " for pathogen.vim: auto load all plugins in .vim/bundle
-call pathogen#infect()
+execute pathogen#infect()
 " call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" call pathogen#helptags()
 
 " general settings
 set nocompatible    " not compatible with the old-fashion vi mode
@@ -40,7 +40,7 @@ if has("gui_running")	" GUI color and font settings
   colors moria
 else
   " terminal color settings
-  colors vgod
+  " colors vgod
 endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
